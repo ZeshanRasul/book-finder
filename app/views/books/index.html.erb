@@ -1,3 +1,14 @@
-No books yet
+<% if @books.any? %>
+  <% @books.each do |book| %>
+    <%= book.name  %>
+    <%= book.author %>
+    <%= book.year %>
+    <%= book.genre %>
+  <% end %>
+<% else %>
+  No books yet
+<% end %>
+
 <br />
-<button a href="#"> Click here to add a book </button>
+
+<button a href="/new"> Click here to add a book </button>
