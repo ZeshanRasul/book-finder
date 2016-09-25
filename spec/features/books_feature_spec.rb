@@ -29,6 +29,7 @@ feature 'books' do
       fill_in 'Author', with: 'Malcolm Gladwell'
       fill_in 'Year', with: 2005
       fill_in 'Genre', with: 'Non-Fiction'
+      fill_in 'Description', with: 'A book about thinking without thinking'
       click_button 'Create Book'
       expect(page).to have_content 'Blink'
       expect(page).not_to have_content 'No books yet'
@@ -36,11 +37,12 @@ feature 'books' do
   end
 
   context 'viewing books' do
-    let!(:sapiens){ Book.create(name: "Sapiens", author: "Yuval Noah Harari", year: 2011, genre: "Non-Fiction")}
+    let!(:sapiens){ Book.create(name: "Sapiens", author: "Yuval Noah Harari", year: 2011, genre: "Non-Fiction", description: "A book about the history of the homo sapien race")}
     scenario 'should display individual book when link is clicked' do
       visit '/books'
       click_link 'Sapiens'
       expect(page).to have_content 'Sapiens'
+      expect(page).to have_content 'A book about the history of the homo sapien race'
       expect(current_path).to eq "/books/#{sapiens.id}"
     end
   end
