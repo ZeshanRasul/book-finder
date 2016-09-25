@@ -1,6 +1,6 @@
 <% if @books.any? %>
   <% @books.each do |book| %>
-    <%= book.name  %>
+    <%= link_to book.name, book_path(book)  %>
     <%= book.author %>
     <%= book.year %>
     <%= book.genre %>
@@ -11,4 +11,4 @@
 
 <br />
 
-<button a href="/new"> Click here to add a book </button>
+<a href="/books/new"> <button>  Click here to add a book </button> </a>

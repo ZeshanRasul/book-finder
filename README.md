@@ -27,6 +27,8 @@ Things you may want to cover:
 
 * Users can add books - with title, author, year, genre
 
+** duplicate books cannot be added
+
 * Users can view all books
 
 * User can search books by title title, author, year or genre
