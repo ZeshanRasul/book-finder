@@ -46,4 +46,22 @@ feature 'books' do
       expect(current_path).to eq "/books/#{sapiens.id}"
     end
   end
+
+  context 'editing books' do
+    before do
+      Book.create(name: "Great Gatsby", author: "FSF")
+    end
+    scenario 'allows user to edit book' do
+      visit '/books'
+      click_link 'Edit Great Gatsby'
+      fill_in 'Name', with: 'The Great Gatsby'
+      fill_in 'Author', with: 'F.Scott Fitzgerald'
+      fill_in 'Year', with: 1925
+      click_button 'Update Book'
+      expect(page).to have_content 'The Great Gatsby'
+      expect(page).to have_content 'F.Scott Fitzgerald'
+      expect(page).to have_content 1925
+      expect(current_path).to eq '/books'
+    end
+  end
 end

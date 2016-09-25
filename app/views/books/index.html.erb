@@ -5,11 +5,12 @@
     <%= book.year %>
     <%= book.genre %>
     <%= book.description %>
+    <%= link_to "Edit #{book.name}", edit_book_path(book) %>
+    <br />
   <% end %>
 <% else %>
   No books yet
 <% end %>
 
-<br />
 
 <a href="/books/new"> <button>  Click here to add a book </button> </a>
