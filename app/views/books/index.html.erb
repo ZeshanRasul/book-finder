@@ -6,6 +6,7 @@
     <%= book.genre %>
     <%= book.description %>
     <%= link_to "Edit #{book.name}", edit_book_path(book) %>
+    <%= link_to "Delete #{book.name}", book_path(book), method: :delete %>
     <br />
   <% end %>
 <% else %>

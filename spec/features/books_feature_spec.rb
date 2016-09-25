@@ -64,4 +64,17 @@ feature 'books' do
       expect(current_path).to eq '/books'
     end
   end
+
+  context 'deleting books' do
+    before do
+      Book.create(name: "Great Gatsby", author: "FSF")
+    end
+    scenario 'allows user to delete a book' do
+      visit '/books'
+      click_link 'Delete Great Gatsby'
+      expect(page).not_to have_content 'Great Gatsby'
+      expect(page).to have_content 'Book deleted successfully'
+      expect(current_path).to eq '/books'
+    end
+  end
 end
