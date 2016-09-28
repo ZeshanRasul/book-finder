@@ -1,0 +1,18 @@
+<% if @book.errors.any? %>
+  <section id="errors" >
+    <h2> <%= pluralize(@book.errors.count, "error") %> prohibited this restaurant from being saved: </h2>
+    <ul>
+      <% @restaurant.error.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+<%= form_for [@book, @review] do |f| %>
+  <%= f.label :thoughts %>
+  <%= f.text_area :thoughts %>
+  <%= f.label :rating %>
+  <%= f.select :rating, (1..5) %>
+  <%= f.submit 'Leave Review' %>
+<% end %>

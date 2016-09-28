@@ -34,6 +34,17 @@ feature 'books' do
       expect(page).to have_content 'Blink'
       expect(page).not_to have_content 'No books yet'
     end
+
+    context 'invalid book' do
+      scenario 'cant submit a name too short' do
+        visit '/books'
+        click_link 'Click here to add a book'
+        fill_in 'Name', with: '£'
+        click_button 'Create Book'
+        expect(page).not_to have_content '£'
+        expect(page).to have_content 'Error'
+      end
+    end
   end
 
   context 'viewing books' do

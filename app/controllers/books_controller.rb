@@ -9,7 +9,12 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.create(book_params)
-    redirect_to '/books'
+    if !@book.save
+      flash[:notice] = 'Error, Name too short'
+      redirect_to '/books'
+    else
+      redirect_to '/books'
+    end
   end
 
   def show
