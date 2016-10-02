@@ -1,6 +1,6 @@
 <% if @books.any? %>
-  <table>
-    <tr>
+  <table border=1>
+      <tr>
       <th> Name </th>
       <th> Author </th>
       <th> Year </th>
@@ -24,12 +24,30 @@
 
         <% if book.reviews.any? %>
           <td>
-            <% book.reviews.each do |review| %>
-              <li>
-                <%= review.thoughts %>
-                <%= review.rating %>
-              </li>
-            <% end %>
+            <ul style="list-style: none;">
+
+              <% book.reviews.each do |review| %>
+                <li>
+                  <%= review.thoughts %>
+                </li>
+              <% end %>
+            </ul>
+          </td>
+          <td>
+            <ul style="list-style: none;">
+              <% book.reviews.each do |review| %>
+                <li>
+                  <%= review.rating %>
+                </li>
+              <% end %>
+            </ul>
+          </td>
+        <% else %>
+          <td>
+            &nbsp;
+          </td>
+          <td>
+            &nbsp;
           </td>
         <% end %>
 
