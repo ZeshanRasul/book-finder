@@ -45,6 +45,13 @@ feature 'books' do
         expect(page).to have_content 'Error'
       end
     end
+
+    scenario 'books cannot be submitted if user is not logged in' do
+      visit '/books'
+      click_link 'Click here to add a book'
+      expect(page).to have_content 'Log in'
+      expect(page).not_to have_content 'Create Book'
+    end
   end
 
   context 'viewing books' do

@@ -34,8 +34,7 @@ require 'rails_helper'
         visit ('/')
         expect(page).not_to have_link('Sign up')
         expect(page).not_to have_link('Sign in')
-      end
-
-      
+      end  
     end
+
   end
