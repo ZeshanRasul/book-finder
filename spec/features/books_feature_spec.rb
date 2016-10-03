@@ -23,6 +23,7 @@ feature 'books' do
 
   context 'adding new books' do
     scenario 'prompts user to complete form and then displays new book' do
+      sign_up
       visit '/books'
       click_link 'Click here to add a book'
       fill_in 'Name', with: 'Blink'
@@ -37,6 +38,7 @@ feature 'books' do
 
     context 'invalid book' do
       scenario 'cant submit a name too short' do
+        sign_up
         visit '/books'
         click_link 'Click here to add a book'
         fill_in 'Name', with: '£'
@@ -70,6 +72,7 @@ feature 'books' do
       Book.create(name: "Great Gatsby", author: "FSF")
     end
     scenario 'allows user to edit book' do
+      sign_up
       visit '/books'
       click_link 'Edit Great Gatsby'
       fill_in 'Name', with: 'The Great Gatsby'
@@ -88,6 +91,7 @@ feature 'books' do
       Book.create(name: "Great Gatsby", author: "FSF")
     end
     scenario 'allows user to delete a book' do
+      sign_up
       visit '/books'
       click_link 'Delete Great Gatsby'
       expect(page).not_to have_content 'Great Gatsby'
