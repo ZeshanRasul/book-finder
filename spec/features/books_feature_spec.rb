@@ -68,9 +68,11 @@ feature 'books' do
   end
 
   context 'editing books' do
+
     before do
-      Book.create(name: "Great Gatsby", author: "FSF")
+      Book.create(name: "Great Gatsby", author: "FSF")    
     end
+
     scenario 'allows user to edit book' do
       sign_up
       visit '/books'
@@ -84,6 +86,7 @@ feature 'books' do
       expect(page).to have_content 1925
       expect(current_path).to eq '/books'
     end
+
   end
 
   context 'deleting books' do
