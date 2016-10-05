@@ -8,7 +8,7 @@ class Book < ApplicationRecord
   validates :name, length:
             { minimum: 3, too_short:
             "%{count} characters is too short" },
-            uniqueness: true
+             uniqueness: true
 
   # def build_review(attributes = {}, user)
   #   review = reviews.build(attributes)

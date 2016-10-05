@@ -36,6 +36,26 @@ feature 'books' do
       expect(page).not_to have_content 'No books yet'
     end
 
+    scenario 'multiple books with the same name cannot be added' do
+      sign_up
+      visit '/books'
+      click_link 'Click here to add a book'
+      fill_in 'Name', with: 'Blink'
+      fill_in 'Author', with: 'Malcolm Gladwell'
+      fill_in 'Year', with: 2005
+      fill_in 'Genre', with: 'Non-Fiction'
+      fill_in 'Description', with: 'A book about thinking without thinking'
+      click_button 'Create Book'
+      click_link 'Click here to add a book'
+      fill_in 'Name', with: 'Blink'
+      fill_in 'Author', with: 'Malcolm Gladwell'
+      fill_in 'Year', with: 2005
+      fill_in 'Genre', with: 'Non-Fiction'
+      fill_in 'Description', with: 'A book about thinking without thinking'
+      click_button 'Create Book'
+      expect(page).to have_content 'Error'
+    end
+
     context 'invalid book' do
       scenario 'cant submit a name too short' do
         sign_up
@@ -70,7 +90,7 @@ feature 'books' do
   context 'editing books' do
 
     before do
-      Book.create(name: "Great Gatsby", author: "FSF")    
+      Book.create(name: "Great Gatsby", author: "FSF")
     end
 
     scenario 'allows user to edit book' do

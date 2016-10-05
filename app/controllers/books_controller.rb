@@ -13,7 +13,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.create(book_params)
     if !@book.save
-      flash[:notice] = 'Error, Name too short'
+      flash[:notice] = 'Error, book name must be longer than 3 letters and not already exist'
       redirect_to '/books'
     else
       redirect_to '/books'
