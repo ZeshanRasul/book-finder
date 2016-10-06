@@ -30,3 +30,9 @@
  tr:nth-child(even) {
      background-color: #e3f7ff;
  }
+
+ ul, li {
+   text-align: center;
+   margin: 0;
+   padding: 0;
+ }
