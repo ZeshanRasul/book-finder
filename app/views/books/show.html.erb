@@ -1,2 +1,11 @@
-<%= @book.name %>
-<%= @book.description %>
+<h1> <%= @book.name %> </h1>
+<h3> <%= @book.description %> </h3>
+
+<% @book.reviews.each do |review| %>
+  <li>
+    <%= review.thoughts %>
+  </li>
+<% end %>
+
+
+<%= link_to "Return home", books_path %>

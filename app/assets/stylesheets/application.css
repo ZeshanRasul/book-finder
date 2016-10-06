@@ -18,6 +18,7 @@
  table {
      font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
      border-collapse: collapse;
+     table-layout: auto;
      width: 100%;
  }
 
@@ -35,4 +36,5 @@
    text-align: center;
    margin: 0;
    padding: 0;
+   /*list-style-position: inside;*/
  }
