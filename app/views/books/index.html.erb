@@ -6,8 +6,8 @@
       <th> Year </th>
       <th> Genre </th>
       <th> Description </th>
-      <th> User Reviews </th>
-      <th> User Ratings </th>
+      <!-- <th> User Reviews </th> -->
+      <th> Average User Rating </th>
       <th> Edit </th>
       <th> Delete </th>
       <th> Review </th>
@@ -21,8 +21,8 @@
         <td>  <%= book.year %>     </td>
         <td>  <%= book.genre %>     </td>
         <td>  <%= book.description %>     </td>
-
-        <% if book.reviews.any? %>
+        <td>  <%= book.average_rating%> </td>
+        <!-- <% if book.reviews.any? %>
           <td>
             <ul style="list-style: none;">
 
@@ -33,23 +33,25 @@
               <% end %>
             </ul>
           </td>
-          <td>
-            <ul style="list-style: none;">
+          <td> -->
+            <!-- <ul style="list-style: none;">
               <% book.reviews.each do |review| %>
                 <li>
                   <%= review.rating %>
                 </li>
               <% end %>
             </ul>
-          </td>
-        <% else %>
+          </td> -->
+          <!--  -->
+        <!-- <% else %>
           <td>
             &nbsp;
           </td>
           <td>
             &nbsp;
-          </td>
-        <% end %>
+          </td> -->
+
+        <!-- <% end %> -->
 
         <td> <%= link_to "Edit #{book.name}", edit_book_path(book) %> </td>
         <td> <%= link_to "Delete #{book.name}", book_path(book), method: :delete %> </td>
