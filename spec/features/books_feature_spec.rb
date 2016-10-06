@@ -132,6 +132,7 @@ feature 'books' do
     scenario 'user can search a book and only valid results will display' do
       visit '/books'
       fill_in 'Search', with: "The Hobbit"
+      click_button 'Search'
       expect(page).to have_content "The Hobbit"
       expect(page).not_to have_content "The Lord of The Rings"
       expect(current_path).to eq '/books'
