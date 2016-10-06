@@ -1,3 +1,8 @@
+<%= form_tag(books_path method: "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search books" %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+
 <% if @books.any? %>
   <table border=1>
       <tr>

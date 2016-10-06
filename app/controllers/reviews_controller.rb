@@ -13,11 +13,7 @@ class ReviewsController < ApplicationController
     else
       flash[:notice] = "You have already reviewed this book"
       redirect_to books_path
-      # else
-      #   render :new
-      # end
     end
-    # redirect_to '/books'
   end
 
   private
