@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+
+ table {
+     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+     border-collapse: collapse;
+     width: 100%;
+ }
+
+ td, th {
+     border: 1px solid #000000;
+     text-align: center;
+     padding: 8px;
+ }
+
+ tr:nth-child(even) {
+     background-color: #e3f7ff;
+ }
