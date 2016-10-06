@@ -4,6 +4,11 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    if params[:search]
+      @books = Book.search(params[:search])
+    else
+      @books = Book.all
+    end
   end
 
   def new
@@ -43,6 +48,7 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:name, :author, :year, :genre, :description)
+    # require(:book).
   end
 
 end

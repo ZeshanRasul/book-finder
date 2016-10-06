@@ -4,7 +4,7 @@ feature 'books' do
   context 'no books have been added' do
     scenario 'should display a prompt to add books' do
       visit '/books'
-      expect(page).to have_content 'No books yet'
+      expect(page).to have_content 'No books'
       expect(page).to have_button 'Click here to add a book'
     end
   end
@@ -17,7 +17,7 @@ feature 'books' do
     scenario 'should display a book' do
       visit '/books'
       expect(page).to have_content 'The Prince'
-      expect(page).not_to have_content 'No books yet'
+      expect(page).not_to have_content 'No books'
     end
   end
 
@@ -33,7 +33,7 @@ feature 'books' do
       fill_in 'Description', with: 'A book about thinking without thinking'
       click_button 'Create Book'
       expect(page).to have_content 'Blink'
-      expect(page).not_to have_content 'No books yet'
+      expect(page).not_to have_content 'No books'
     end
 
     scenario 'multiple books with the same name cannot be added' do
@@ -119,6 +119,21 @@ feature 'books' do
       click_link 'Delete Great Gatsby'
       expect(page).not_to have_content 'Great Gatsby'
       expect(page).to have_content 'Book deleted successfully'
+      expect(current_path).to eq '/books'
+    end
+  end
+
+  context 'searching books' do
+    before do
+      sign_up
+      Book.create(name: "The Lord of The Rings")
+      Book.create(name: "The Hobbit")
+    end
+    scenario 'user can search a book and only valid results will display' do
+      visit '/books'
+      fill_in 'Search', with: "The Hobbit"
+      expect(page).to have_content "The Hobbit"
+      expect(page).not_to have_content "The Lord of The Rings"
       expect(current_path).to eq '/books'
     end
   end

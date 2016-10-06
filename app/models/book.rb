@@ -16,4 +16,8 @@ class Book < ApplicationRecord
   #   review
   # end
 
+  def self.search(search)
+    where("name ILIKE ? OR author ILIKE ? OR cast(year as text) ILIKE ? OR genre ILIKE ?", "%#{search}", "%#{search}", "%#{search}", "%#{search}" )
+  end
+
 end
